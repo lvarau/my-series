@@ -1,25 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Header from './component/Header'
+import Home from './component/Home'
+import Series from './component/Series'
+import NewSerie from './component/NewSerie'
+import InfoSerie from './component/InfoSerie'
+import Genres from './component/Genres'
+import NewGenre from './component/NewGenre'
+import EditGenre from './component/EditGenre'
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/series' exact component={Series} />
+        <Route path='/series/new' exact component={NewSerie} />
+        <Route path='/series/:id'exact component={InfoSerie}/>
+        <Route path='/genres' exact component={Genres} />
+        <Route path='/genres/new'exact component={NewGenre} />
+        <Route path='/genres/:id'exact component={EditGenre}/>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
